@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="vwh-UN-lBA">
-                                <rect key="frame" x="16" y="99.000000000000014" width="361" height="161.33333333333337"/>
+                                <rect key="frame" x="16" y="99" width="361" height="309.66666666666669"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ww6-9z-q7L">
                                         <rect key="frame" x="0.0" y="0.0" width="361" height="32"/>
@@ -42,6 +42,19 @@
                                             <action selector="sliderAction" destination="BYZ-38-t0r" eventType="valueChanged" id="PLg-9s-4Oa"/>
                                         </connections>
                                     </slider>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oDD-Oi-xv1">
+                                        <rect key="frame" x="0.0" y="201.33333333333331" width="361" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VN9-CP-uSz">
+                                        <rect key="frame" x="0.0" y="275.33333333333331" width="361" height="34.333333333333314"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Done"/>
+                                        <connections>
+                                            <action selector="doneButtonAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="v8W-lV-WNZ"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -54,9 +67,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="doneButton" destination="VN9-CP-uSz" id="3NF-2o-BV1"/>
                         <outlet property="mainLabel" destination="5Ra-96-w2j" id="v7V-cn-IOw"/>
                         <outlet property="segmentedControl" destination="ww6-9z-q7L" id="WJ2-xf-pv9"/>
                         <outlet property="slider" destination="4Hu-5N-ShU" id="Kqa-Ih-WrL"/>
+                        <outlet property="textField" destination="oDD-Oi-xv1" id="L4g-Mu-ygK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
