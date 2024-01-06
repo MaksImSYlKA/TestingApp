@@ -7,12 +7,14 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
     
     @IBOutlet var segmentedControl: UISegmentedControl!
     @IBOutlet var mainLabel: UILabel!
     @IBOutlet var slider: UISlider!
-    
+    @IBOutlet var doneButton: UIButton!
+    @IBOutlet var textField: UITextField!
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         segmentedControl.insertSegment(
@@ -31,16 +33,25 @@ class ViewController: UIViewController {
         switch segmentedControl.selectedSegmentIndex {
             case 0:
                 mainLabel.text = "Th first segment is selected"
+                mainLabel.textColor = .red
             case 1:
                 mainLabel.text = "Th second segment is selected"
-            case 2:
-                                mainLabel.text = "Th third segment is selected"
-            default:
-                mainLabel.text = slider.value.formatted()
-            
+                mainLabel.textColor = .yellow
                 
+            default:
+                mainLabel.text = "The third segment is selected"
+                mainLabel.textColor = .green
         }
     }
+  
+    @IBAction func doneButtonAction() {
+        guard let inputText = textField.text, !inputText.isEmpty else {
+            showAlert(withTitle: "Error. TF is emptyю", andMessage: "Please enter you name.")
+            return
+        }
+    }
+    
+  
     private func setupSlider(){
         slider.value = 1
         slider.minimumValue = 0
@@ -56,6 +67,19 @@ class ViewController: UIViewController {
         mainLabel.textAlignment = .center
         mainLabel.numberOfLines = 2
     }
-
+    private func showAlert(withTitle title: String, andMessage: String){
+        let alert = UIAlertController(
+            title: title,
+            message: "",
+            preferredStyle: .alert
+        )
+        let okAction = UIAlertAction(
+            title: "Ок",
+            style: .default) { _ in
+                self.textField.text = ""
+            }
+        alert.addAction(okAction)
+        present(alert, animated: true)
+    }
 }
 
