@@ -49,6 +49,13 @@ final class ViewController: UIViewController {
             showAlert(withTitle: "Error. TF is emptyю", andMessage: "Please enter you name.")
             return
         }
+        
+        if let _ = Double(inputText){
+            showAlert(withTitle: "Wrong Format", andMessage: "Please, enter you name")
+        }
+        
+        mainLabel.text = inputText
+        textField.text = ""
     }
     
   
