@@ -54,6 +54,14 @@ final class ViewController: UIViewController {
             showAlert(withTitle: "Wrong Format", andMessage: "Please, enter you name")
         }
         
+        let userNamePattern = "^[a-zA-Z ]{3, 20}$"
+        let isUsernameValid =  NSPredicate(format: "SELF MATCHES %@", userNamePattern).evaluate(with: inputText)
+        
+        if !isUsernameValid{
+            showAlert(withTitle: "Wrong Format", andMessage: "Please, enter you name")
+            return
+        }
+        
         mainLabel.text = inputText
         textField.text = ""
     }
