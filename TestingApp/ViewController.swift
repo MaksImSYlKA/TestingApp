@@ -9,12 +9,14 @@ import UIKit
 
 final class ViewController: UIViewController {
     
+    // MARK: - IB Outlets
     @IBOutlet var segmentedControl: UISegmentedControl!
     @IBOutlet var mainLabel: UILabel!
     @IBOutlet var slider: UISlider!
     @IBOutlet var doneButton: UIButton!
     @IBOutlet var textField: UITextField!
-        
+    
+    // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         segmentedControl.insertSegment(
@@ -25,10 +27,13 @@ final class ViewController: UIViewController {
         setupSlider()
         setupMainLabel()
     }
+    
+    // MARK - IB Actions
     @IBAction func sliderAction() {
         mainLabel.text = slider.value.formatted()
         view.backgroundColor = view.backgroundColor?.withAlphaComponent(CGFloat(slider.value))
     }
+    
     @IBAction func segmentedControlAction(){
         switch segmentedControl.selectedSegmentIndex {
             case 0:
@@ -43,7 +48,7 @@ final class ViewController: UIViewController {
                 mainLabel.textColor = .green
         }
     }
-  
+    
     @IBAction func doneButtonAction() {
         guard let inputText = textField.text, !inputText.isEmpty else {
             showAlert(withTitle: "Error. TF is emptyю", andMessage: "Please enter you name.")
@@ -66,22 +71,7 @@ final class ViewController: UIViewController {
         textField.text = ""
     }
     
-  
-    private func setupSlider(){
-        slider.value = 1
-        slider.minimumValue = 0
-        slider.maximumValue = 1
-        slider.minimumTrackTintColor = .yellow
-        slider.maximumTrackTintColor = .red
-        slider.thumbTintColor = .green
-        
-    }
-    private func setupMainLabel(){
-        mainLabel.text = slider.value.formatted()
-        mainLabel.font = .systemFont(ofSize: 35)
-        mainLabel.textAlignment = .center
-        mainLabel.numberOfLines = 2
-    }
+    //MARK: - Private methods
     private func showAlert(withTitle title: String, andMessage: String){
         let alert = UIAlertController(
             title: title,
@@ -97,4 +87,21 @@ final class ViewController: UIViewController {
         present(alert, animated: true)
     }
 }
-
+    //MARK: - Setup UI
+extension ViewController{
+    private func setupSlider(){
+        slider.value = 1
+        slider.minimumValue = 0
+        slider.maximumValue = 1
+        slider.minimumTrackTintColor = .yellow
+        slider.maximumTrackTintColor = .red
+        slider.thumbTintColor = .green
+    }
+    
+    private func setupMainLabel(){
+        mainLabel.text = slider.value.formatted()
+        mainLabel.font = .systemFont(ofSize: 35)
+        mainLabel.textAlignment = .center
+        mainLabel.numberOfLines = 2
+    }
+}
